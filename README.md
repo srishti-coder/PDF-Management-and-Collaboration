@@ -1,5 +1,5 @@
 # PDF-Management-and-Collaboration
-
+It is a clone webapp to view pdf files & collaborate with other users.
 Website: [Link](http://ec2-18-142-54-33.ap-southeast-1.compute.amazonaws.com)
 
 ### Local Setup
