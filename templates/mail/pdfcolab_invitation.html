@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>PDFColab Invitation</title>
+  </head>
+  <body>
+    <p>Dear {{ recipient_name }},</p>
+    <p>
+      You are invited to collaborate on a PDF project by {{ pdf_owner_name }}
+      using PDFColab.
+    </p>
+    <p>Please find attached the invitation details and instructions.</p>
+    <h3>Invitation Details:</h3>
+    <ul>
+      <li>Project Name: {{ project_name }}</li>
+      <li>Invitation Link: <a href="{{ invitation_link }}">link</a></li>
+    </ul>
+    <p>We look forward to working together on this project!</p>
+    <p>Best regards,</p>
+    <p>PDFColab</p>
+  </body>
+</html>

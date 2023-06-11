@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  dev-webserver:
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./apps:/pdfcolab/apps
+      - ./fe-apps:/pdfcolab/fe-apps
+      - ./config:/pdfcolab/config
+      - ./templates:/pdfcolab/templates
+      - ./static:/pdfcolab/static
+      - ./build:/pdfcolab/build
+      - dev-static-data:/vol/web
+    command: >
+      sh -c "yarn start &
+            python manage.py wait_for_db &&
+            python manage.py migrate &&
+            python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=devdb
+      - DB_USER=postgres
+      - DB_PASS=changeme
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - DEBUG=1
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=changeme
+
+volumes:
+  dev-db-data:
+  dev-static-data:

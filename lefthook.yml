@@ -1,0 +1,9 @@
+pre-commit:
+  parallel: true
+  commands:
+    frontend-linter:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: yarn eslint --config .eslintrc.js {staged_files}
+    backend-linter:
+      glob: "*.py"
+      run: flake8  --config .flake8 {staged_files}

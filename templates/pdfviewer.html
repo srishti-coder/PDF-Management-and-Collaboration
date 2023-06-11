@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}PDF Viewer{% endblock %}
+
+{% block extra_scripts %}
+  <link rel="stylesheet" href="{% static 'styles/pdfviewer.css' %}" />
+  <script src="{% static 'js/pdfviewer.js' %}" defer></script>
+{% endblock %}

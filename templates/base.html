@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}PDFColab{% endblock %}</title>
+    <link rel="icon" href="{% static 'icons/logo.svg' %}" />
+    {{ context|json_script:"context" }}
+    <link rel="stylesheet" href="{% static 'css/tailwind.django.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/tailwind.css' %}" />
+    {% block extra_css %}{% endblock %}
+    <script src="{% static 'js/script.js' %}" defer></script>
+    <script src="{% static 'js/vendors.js' %}" defer></script>
+    {% block extra_scripts %}{% endblock %}
+  </head>
+  <body class="bg-base-100">
+    <div id="root" class="invisible" />
+  </body>
+</html>
